@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<data>
+		<!-- cep.daftar.hadir tree view -->
+		<record id="cep_daftar_hadir_view_tree" model="ir.ui.view">
+			<field name="name">cep.daftar.hadir.view.tree</field>
+			<field name="model">cep.daftar.hadir</field>
+			<field name="arch" type="xml">
+				<tree>
+					<!-- Add your fields here -->
+						<field name="nama"/>
+						<field name="user_id"/>
+						<field name="check_in" widget="datetime"/>
+						<field name="check_out"/>
+						<field name="location"/>
+						<field name="state"/>
+				</tree>
+			</field>
+		</record>
+		<!-- cep.daftar.hadir form view -->
+		<record id="cep_daftar_hadir_view_form" model="ir.ui.view">
+			<field name="name">cep.daftar.hadir.view.form</field>
+			<field name="model">cep.daftar.hadir</field>
+			<field name="arch" type="xml">
+				<form string="Daftar Hadir">
+					<header>
+                        <button string="Masuk" name="action_confirm" type="object" class="oe_highlight" states="draft"/>
+                        <button string="Keluar" name="action_done" type="object" class="oe_highlight" states="confirm"/>
+                        <button string="Reset" name="action_draft" type="object" class="oe_highlight" states="done,confirm"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>
+                	</header>
+					<sheet>
+					<widget name="web_ribbon" text="Selesai" bg_color="bg-info" attrs="{'invisible':[('state','!=','done')]}"/>
+					<group>
+						<filter name="draft" string="Masuk" domain="[('state', '!=', 'draft')]" />
+						<filter name="confirm" string="Keluar" domain="[('state', '!=', 'confirm')]" />
+						<filter name="done" string="Selesai" domain="[('state', '!=', 'done')]" />
+					</group>
+						<group name="hadir" string="Daftar Hadir">
+							<!-- Add your fields here -->
+							<group>
+								<field name="nama" attrs="{'readonly': [('state','!=','draft')]}"/>
+								<field name="user_id" attrs="{'readonly': [('state','!=','draft')]}"/>
+							</group>
+							<group>
+								<field name="check_in" widget="datetime" attrs="{'readonly': [('state','!=','draft')]}"/>
+								<field name="check_out" attrs="{'readonly': [('state','!=','confirm')]}"/>
+							</group>
+							<group>
+								<field name="location" attrs="{'readonly': [('state','!=','draft')]}"/>
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<!-- cep.daftar.hadir action window -->
+		<record id="cep_daftar_hadir_action" model="ir.actions.act_window">
+			<field name="name">Daftar Hadir</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">cep.daftar.hadir</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					<!-- Add Text Here -->
+				</p><p>
+					<!-- More details about what a user can do with this object will be OK --> 
+				
+				</p>
+			</field>
+		</record>
+
+
+	</data>
+	
+</odoo>

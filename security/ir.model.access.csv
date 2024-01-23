@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_daftar_hadir_user,access_daftar_hadir_user,model_cep_daftar_hadir,,1,1,1,0
+access_daftar_hadir_manager,access_daftar_hadir_manager,model_cep_daftar_hadir,group_manager,1,1,1,1
