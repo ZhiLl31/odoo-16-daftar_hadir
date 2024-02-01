@@ -25,13 +25,13 @@
 	'data': [
 		'security/groups.xml',
 		'security/ir.model.access.csv',
-		# 'views/views.xml',
-		# 'views/templates.xml',
 		'views/daftar_hadir.xml',
 		'views/menu_daftar_hadir.xml',
+		# 'views/views.xml',
+		# 'views/templates.xml',
 	],
 	# only loaded in demonstration mode
 	'demo': [
-		# 'demo/demo.xml',
+		'demo/demo.xml',
 	],
 }

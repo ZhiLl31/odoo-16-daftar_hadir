@@ -13,6 +13,7 @@
 						<field name="check_in" widget="datetime"/>
 						<field name="check_out"/>
 						<field name="location"/>
+						<field name="kode_unik"/>
 						<field name="state"/>
 				</tree>
 			</field>
@@ -24,9 +25,9 @@
 			<field name="arch" type="xml">
 				<form string="Daftar Hadir">
 					<header>
-                        <button string="Masuk" name="action_confirm" type="object" class="oe_highlight" states="draft"/>
-                        <button string="Keluar" name="action_done" type="object" class="oe_highlight" states="confirm"/>
-                        <button string="Reset" name="action_draft" type="object" class="oe_highlight" states="done,confirm"/>
+                        <button string="Masuk" name="action_confirm" type="object" class="oe_highlight" states="draft" groups="daftar_hadir.group_manager"/>
+                        <button string="Keluar" name="action_done" type="object" class="oe_highlight" states="confirm" groups="daftar_hadir.group_manager"/>
+                        <button string="Reset" name="action_draft" type="object" class="oe_highlight" states="done,confirm" groups="daftar_hadir.group_manager"/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>
                 	</header>
 					<sheet>
@@ -41,6 +42,7 @@
 							<group>
 								<field name="nama" attrs="{'readonly': [('state','!=','draft')]}"/>
 								<field name="user_id" attrs="{'readonly': [('state','!=','draft')]}"/>
+								<field name="kode_unik" attrs="{'readonly': [('state','!=','draft')]}"/>
 							</group>
 							<group>
 								<field name="check_in" widget="datetime" attrs="{'readonly': [('state','!=','draft')]}"/>

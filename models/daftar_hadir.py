@@ -10,12 +10,20 @@ class DaftarHadir(models.Model):
 	check_out = fields.Datetime(string='Tanggal & Jam Keluar')
 	location = fields.Selection(string='Lokasi', selection=[('kantor 1', 'Kantor 1'), ('kantor 2', 'Kantor 2'),])
 	state = fields.Selection(string='Status', selection=[('draft', 'Masuk'), ('confirm', 'Keluar'),('done', 'Selesai')],default='draft', tracking=True)
-	
+	kode_unik = fields.Char(string='Kode Unik')
+
+	@api.constrains('kode_unik')
+	def _check_kode_unik(self):
+			for record in self:
+				if record.kode_unik and not record.kode_unik.isdigit():
+					raise models.ValidationError('Kode Unik harus angka')
+		
 	def action_confirm(self):
-		self.state='confirm'
-			
+			self.state='confirm'
+				
 	def action_done(self):
-		self.state='done'
+			self.state='done'
 
 	def action_draft(self):
-		self.state='draft'
+			self.state='draft'
+

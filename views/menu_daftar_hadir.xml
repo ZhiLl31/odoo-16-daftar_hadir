@@ -6,7 +6,7 @@
 
 		<!-- This Menu Item Must have a parent -->
 		<!-- <menuitem id="daftar_menu_categ" name="Daftar" parent="cep_daftar_hadir_menu_root" sequence="10"/> -->
-		<menuitem id="pengaturan_menu_categ" name="Pengaturan" parent="cep_daftar_hadir_menu_root" sequence="20"/>
+		<!-- <menuitem id="pengaturan_menu_categ" name="Pengaturan" parent="cep_daftar_hadir_menu_root" sequence="20"/> -->
 		<!-- This Menu Item must have a parent and an action -->
 		<menuitem id="daftar_hadir_menu_act" name="Daftar Hadir" parent="cep_daftar_hadir_menu_root" action="cep_daftar_hadir_action" sequence="10"/>
 	</data>
